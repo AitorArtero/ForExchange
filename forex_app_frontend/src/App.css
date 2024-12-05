@@ -1,0 +1,122 @@
+/* Fondo oscuro para toda la aplicación y texto blanco */
+body, html {
+  background-color: #2c3e50 !important; /* Fondo oscuro general */
+  color: #ecf0f1 !important; /* Texto blanco general */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Aseguramos que el contenedor de la app tenga el fondo oscuro */
+.App {
+  background-color: #2c3e50; /* Fondo oscuro para la app */
+  min-height: 100vh; /* Asegura que la app ocupe toda la altura de la pantalla */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos para la cabecera de la app */
+.App-header {
+  background-color: #282c34; /* Fondo oscuro para la cabecera */
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 20px;
+}
+
+/* Fondo oscuro para el contenedor principal de la aplicación */
+.container {
+  background-color: #34495e; /* Fondo más claro pero aún oscuro para el contenido */
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px; /* Para dar un poco de espacio superior */
+  color: white; /* Asegura que el texto dentro de los contenedores también sea blanco */
+}
+
+/* Asegura que todos los encabezados (h1, h2, etc.) tengan texto blanco */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff; /* Texto blanco en encabezados */
+}
+
+/* Fondo oscuro para la tabla */
+.table-dark {
+  background-color: #495057; /* Fondo oscuro para la tabla */
+}
+
+.table-dark th, .table-dark td {
+  color: #ecf0f1; /* Texto blanco en la tabla */
+}
+
+/* Fondo oscuro para la barra de navegación */
+nav {
+  background-color: #2c3e50; /* Fondo oscuro para la barra de navegación */
+  padding: 10px;
+}
+
+/* Enlaces en la barra de navegación */
+nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+/* Estilos para los botones */
+.btn {
+  background-color: #007bff; /* Azul brillante para los botones */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Azul más oscuro al hacer hover */
+}
+
+/* Estilo para el pie de página */
+footer {
+  background-color: #2c3e50; /* Fondo oscuro para el pie de página */
+  color: #ecf0f1;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilo para inputs, selects y textareas */
+input.form-control, select.form-control, textarea.form-control {
+  background-color: #495057; /* Fondo oscuro */
+  color: white; /* Texto blanco */
+  border: 1px solid #6c757d;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Evitar que el color del texto cambie al enfocar */
+input.form-control:focus, select.form-control:focus, textarea.form-control:focus {
+  border-color: #007bff; /* Fondo azul en el borde al enfocar */
+  background-color: #343a40; /* Fondo más oscuro al enfocar */
+  color: white; /* Mantener el texto blanco al enfocar */
+  outline: none; /* Eliminar el contorno predeterminado del navegador */
+}
+
+/* Cambiar el color del texto cuando el input no está enfocado (en el estado normal) */
+input.form-control::placeholder, select.form-control::placeholder, textarea.form-control::placeholder {
+  color: #ecf0f1; /* Aseguramos que el texto del placeholder sea claro */
+}
+
+/* Para los inputs y select en estado de hover */
+input.form-control:hover, select.form-control:hover, textarea.form-control:hover {
+  background-color: #495057; /* Fondo más oscuro para el hover */
+  color: white; /* Texto blanco incluso en hover */
+}

@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  api_gateway:
+    build: ./api_gateway
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=run.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+      - FOREX_SERVICE_URL=http://forex_service:8001
+      - FAVORITES_SERVICE_URL=http://favorites_service:3000
+    depends_on:
+      - forex_service
+      - favorites_service
+    networks:
+      - microservices_network
+    command: flask run --host=0.0.0.0 --port=5000
+
+  forex_service:
+    build: ./microservicio_divisas
+    ports:
+      - "8001:8001"
+    environment:
+      - DATABASE_URL=postgresql://myuser:mypassword@forex_db:5432/forexchange
+    depends_on:
+      - forex_db
+    networks:
+      - microservices_network
+
+  favorites_service:
+    build: ./microservicio_favoritos
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGO_URI=mongodb://favorites_db:27017/favoritesDB
+    depends_on:
+      - favorites_db
+    networks:
+      - microservices_network
+
+  forex_db:
+    image: postgres:13-alpine
+    environment:
+      - POSTGRES_DB=forexchange
+      - POSTGRES_USER=myuser
+      - POSTGRES_PASSWORD=mypassword
+    volumes:
+      - forex_db_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432" # Para evitar conflictos cuando el servicio esta corriendo en el host tamb
+    networks:
+      - microservices_network
+
+  favorites_db:
+    image: mongo:latest
+    volumes:
+      - favorites_db_data:/data/db
+    ports:
+      - "27018:27017" # Para evitar conflictos cuando el servicio esta corriendo en el host tamb
+    networks:
+      - microservices_network
+
+networks:
+  microservices_network:
+    driver: bridge
+
+volumes:
+  forex_db_data:
+  favorites_db_data:
